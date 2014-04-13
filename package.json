@@ -1,6 +1,6 @@
 {
   "name": "toga-parser-js",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "An inline-documentation parser for JavaScript Toga documentation.",
   "keywords": [
     "toga",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "mout": "^0.9.0",
-    "tunic": "^0.1.0"
+    "tunic": "^0.2.0"
   },
   "devDependencies": {
     "coveralls": "^2.6.1",
