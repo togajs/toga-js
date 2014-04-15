@@ -1,6 +1,6 @@
 # Toga JavaScript Parser
 
-An inline-documentation parser for JavaScript Toga documentation.
+Generates a [Toga](http://togajs.github.io) abstract syntax tree for JavaScript files using [Tunic](http://github.com/togajs/tunic).
 
 [![NPM version](https://badge.fury.io/js/toga-parser-js.png)](http://badge.fury.io/js/toga-parser-js)
 [![Build Status](https://travis-ci.org/togajs/toga-parser-js.png?branch=master)](https://travis-ci.org/togajs/toga-parser-js)
