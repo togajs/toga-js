@@ -27,7 +27,8 @@
   },
   "dependencies": {
     "mout": "^0.9.0",
-    "tunic": "^0.2.0"
+    "tunic": "^0.2.0",
+    "vinyl": "^0.2.3"
   },
   "devDependencies": {
     "coveralls": "^2.6.1",

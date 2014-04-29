@@ -20,6 +20,11 @@ describe('TogaParserJs', function () {
     describe('#_transform', function () {
         var toEqualExpected = function (file, cb) {
             var expected = file.path.replace('fixtures', 'expected');
+
+            if (expected === 'manifest.json') {
+                return cb();
+            }
+
             expect(file.toga.ast).toEqual(require(expected + '.json'));
             cb(null, file);
         };

@@ -8,10 +8,9 @@
  * like a tag, it's a tag.
  */
 
-// var File = require('vinyl');
+var File = require('vinyl');
 var Tunic = require('tunic');
 var inherits = require('mout/lang/inheritPrototype');
-var namespace = require('mout/object/namespace');
 
 /**
  * @class Toga.Parser.JavaScript
@@ -39,7 +38,7 @@ var base = Tunic.prototype;
  */
 proto.defaults = {
     extension: /.(js|ts)$/,
-    blockIndents: /^[\t \*]/gm,
+    blockIndent: /^[\t \*]/gm,
     blockParse: /^[\t ]*\/\*\*(?!\/)([\s\S]*?)\s*\*\//m,
     blockSplit: /(^[\t ]*\/\*\*(?!\/)[\s\S]*?\s*\*\/)/m,
     tagParse: /^(\w+)[\t \-]*(\{[^\}]+\})?[\t \-]*(\[[^\]]*\]\*?|\S*)?[\t \-]*([\s\S]+)?$/m,
@@ -63,12 +62,12 @@ proto.defaults = {
  * @param {Vinyl} file
  * @return {Boolean}
  */
-proto.push = function(file) {
+proto.push = function (file) {
     var toga;
 
-    // Reassign tunic to toga.ast
+    // Reassign `.tunic` to `.toga.ast`
     if (file && file.tunic) {
-        toga = namespace(file, 'toga');
+        toga = file.toga || (file.toga = {});
         toga.ast = file.tunic;
         delete file.tunic;
     }
@@ -83,10 +82,10 @@ proto.push = function(file) {
  * @param {Function} cb
  */
 proto._flush = function (cb) {
-    // this.push(new File({
-    //     path: 'manifest.json',
-    //     contents: new Buffer(JSON.stringify(this.data, null, 2))
-    // }));
+    this.push(new File({
+        path: 'manifest.json',
+        contents: new Buffer('{}')
+    }));
 
     cb();
 };
