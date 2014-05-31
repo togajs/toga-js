@@ -8,9 +8,10 @@
  * like a tag, it's a tag.
  */
 
-var File = require('vinyl');
-var Tunic = require('tunic');
-var inherits = require('mout/lang/inheritPrototype');
+var base, proto,
+	File = require('vinyl'),
+	Tunic = require('tunic'),
+	inherits = require('mout/lang/inheritPrototype');
 
 /**
  * @class Toga.Parser.JavaScript
@@ -20,15 +21,15 @@ var inherits = require('mout/lang/inheritPrototype');
  * @param {Object} options
  */
 function TogaParserJavaScript(options) {
-    if (!(this instanceof TogaParserJavaScript)) {
-        return new TogaParserJavaScript(options);
-    }
+	if (!(this instanceof TogaParserJavaScript)) {
+		return new TogaParserJavaScript(options);
+	}
 
-    Tunic.apply(this, arguments);
+	Tunic.apply(this, arguments);
 }
 
-var proto = inherits(TogaParserJavaScript, Tunic);
-var base = Tunic.prototype;
+proto = inherits(TogaParserJavaScript, Tunic);
+base = Tunic.prototype;
 
 /**
  * Default options.
@@ -37,22 +38,22 @@ var base = Tunic.prototype;
  * @type {Object}
  */
 proto.defaults = {
-    extension: /.(js|ts)$/,
-    blockIndent: /^[\t \*]/gm,
-    blockParse: /^[\t ]*\/\*\*(?!\/)([\s\S]*?)\s*\*\//m,
-    blockSplit: /(^[\t ]*\/\*\*(?!\/)[\s\S]*?\s*\*\/)/m,
-    tagParse: /^(\w+)[\t \-]*(\{[^\}]+\})?[\t \-]*(\[[^\]]*\]\*?|\S*)?[\t \-]*([\s\S]+)?$/m,
-    tagSplit: /^[\t ]*@/m,
-    namedTags: [
-        'module',
-        'imports',
-        'exports',
-        'class',
-        'extends',
-        'method',
-        'param',
-        'property'
-    ]
+	extension: /.(js|ts)$/,
+	blockIndent: /^[\t \*]/gm,
+	blockParse: /^[\t ]*\/\*\*(?!\/)([\s\S]*?)\s*\*\//m,
+	blockSplit: /(^[\t ]*\/\*\*(?!\/)[\s\S]*?\s*\*\/)/m,
+	tagParse: /^(\w+)[\t \-]*(\{[^\}]+\})?[\t \-]*(\[[^\]]*\]\*?|\S*)?[\t \-]*([\s\S]+)?$/m,
+	tagSplit: /^[\t ]*@/m,
+	namedTags: [
+		'module',
+		'imports',
+		'exports',
+		'class',
+		'extends',
+		'method',
+		'param',
+		'property'
+	]
 };
 
 /**
@@ -63,16 +64,16 @@ proto.defaults = {
  * @return {Boolean}
  */
 proto.push = function (file) {
-    var toga;
+	var toga;
 
-    // Reassign `.tunic` to `.toga.ast`
-    if (file && file.tunic) {
-        toga = file.toga || (file.toga = {});
-        toga.ast = file.tunic;
-        delete file.tunic;
-    }
+	// Reassign `.tunic` to `.toga.ast`
+	if (file && file.tunic) {
+		toga = file.toga || (file.toga = {});
+		toga.ast = file.tunic;
+		delete file.tunic;
+	}
 
-    return base.push.apply(this, arguments);
+	return base.push.apply(this, arguments);
 };
 
 /**
@@ -82,12 +83,12 @@ proto.push = function (file) {
  * @param {Function} cb
  */
 proto._flush = function (cb) {
-    this.push(new File({
-        path: 'manifest.json',
-        contents: new Buffer('{}')
-    }));
+	this.push(new File({
+		path: 'manifest.json',
+		contents: new Buffer('{}')
+	}));
 
-    cb();
+	cb();
 };
 
 module.exports = TogaParserJavaScript;
