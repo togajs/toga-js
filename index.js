@@ -11,7 +11,7 @@
 var base, proto,
 	File = require('vinyl'),
 	Tunic = require('tunic'),
-	inherits = require('mout/lang/inheritPrototype');
+	inherits = require('mtil/function/inherits');
 
 /**
  * @class Toga.Parser.JavaScript
