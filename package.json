@@ -1,7 +1,7 @@
 {
   "name": "toga-parser-js",
-  "version": "0.1.0-alpha3",
-  "description": "A JavaScript inline-documentation parser generating Toga documentation.",
+  "version": "0.1.1",
+  "description": "A JavaScript inline-documentation parser.",
   "keywords": [
     "toga",
     "parser",
