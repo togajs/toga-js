@@ -2,6 +2,12 @@
 
 Generates a [Toga](http://togajs.github.io) abstract syntax tree for JavaScript files using [Tunic](http://github.com/togajs/tunic).
 
+## Install
+
+With [Node.js](http://nodejs.org):
+
+    $ npm install toga-parser-js
+
 ## Test
 
     $ npm test
