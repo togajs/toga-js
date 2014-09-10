@@ -1,14 +1,12 @@
 # `toga-parser-js`
 
-> A JavaScript inline-documentation parser.
+> The JavaScript inline-documentation parser.
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url]
 
 Generates a [Toga](http://togajs.github.io) abstract syntax tree for JavaScript files using [Tunic](http://github.com/togajs/tunic).
 
 ## Install
-
-With [Node.js](http://nodejs.org):
 
     $ npm install toga-parser-js
 
