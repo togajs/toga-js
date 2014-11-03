@@ -8,14 +8,14 @@ var TogaParserJs = require('../index'),
 describe('TogaParserJs', function () {
 	var parser = TogaParserJs;
 
-	it('should create an instance when invoked directly', function () {
-		var p = parser();
-		expect(p instanceof TogaParserJs).to.be(true);
-	});
+	it('should create an instance', function () {
+		var a = parser(),
+			b = new TogaParserJs();
 
-	it('should create an instance when called with `new`', function () {
-		var p = new TogaParserJs();
-		expect(p instanceof TogaParserJs).to.be(true);
+		expect(a).to.be.a(TogaParserJs);
+		expect(b).to.be.a(TogaParserJs);
+
+		expect(a).not.to.be(b);
 	});
 
 	describe('prototype', function () {
@@ -28,11 +28,13 @@ describe('TogaParserJs', function () {
 				}
 
 				expect(JSON.stringify(file.toga.ast)).to.be(JSON.stringify(require(expected + '.json')));
+
 				cb(null, file);
 			}
 
 			function toEqualUndefined(file, cb) {
 				expect(file.toga).to.be(undefined);
+
 				cb(null, file);
 			}
 
@@ -44,7 +46,12 @@ describe('TogaParserJs', function () {
 			});
 
 			it('should not parse empty files', function (done) {
-				es.readArray([{ path: 'foo.js' }, { path: 'foo.js', content: null }])
+				var files = [
+					{ path: 'foo.js' },
+					{ path: 'foo.js', content: null }
+				];
+
+				es.readArray(files)
 					.pipe(parser())
 					.pipe(es.map(toEqualUndefined))
 					.on('end', done);
