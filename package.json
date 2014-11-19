@@ -1,25 +1,26 @@
 {
   "name": "toga-js",
   "version": "0.1.1",
-  "description": "A JavaScript inline-documentation parser.",
+  "description": "A JavaScript inline documentation-block parser.",
   "keywords": [
-    "toga",
+    "togaplugin",
     "parser",
+    "javascript",
+    "js",
     "docblock",
     "doctrine",
     "dox",
-    "js",
     "jsdoc",
     "yuidoc"
   ],
-  "homepage": "https://github.com/togajs/toga-parser-js",
-  "bugs": "https://github.com/togajs/toga-parser-js/issues",
+  "homepage": "https://github.com/togajs/toga-js",
+  "bugs": "https://github.com/togajs/toga-js/issues",
   "license": "MIT",
   "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/togajs/toga-parser-js.git"
+    "url": "https://github.com/togajs/toga-js.git"
   },
   "scripts": {
     "coveralls": "cat ./coverage/lcov.info | coveralls",
@@ -27,8 +28,7 @@
   },
   "dependencies": {
     "mtil": "^0.1.3",
-    "tunic": "^0.2.1",
-    "vinyl": "^0.4.3"
+    "tunic": "^0.2.1"
   },
   "devDependencies": {
     "coveralls": "^2.11.1",
@@ -39,9 +39,8 @@
     "gulp-jscs": "^1.1.2",
     "gulp-jshint": "^1.8.4",
     "gulp-mocha": "^1.0.0",
-    "gulp-watch": "^1.0.2",
     "jshint-stylish": "^0.4.0",
-    "vinyl-fs": "^0.3.7"
+    "toga": "^0.2.2"
   },
   "engines": {
     "node": ">= 0.10"
