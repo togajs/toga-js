@@ -1,6 +1,6 @@
 {
   "name": "toga-js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A JavaScript inline documentation-block parser.",
   "keywords": [
     "togaplugin",
@@ -23,7 +23,7 @@
     "url": "https://github.com/togajs/toga-js.git"
   },
   "scripts": {
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "coveralls": "gulp test && cat ./coverage/lcov.info | coveralls",
     "test": "gulp test"
   },
   "dependencies": {
@@ -40,7 +40,7 @@
     "gulp-jshint": "^1.8.4",
     "gulp-mocha": "^1.0.0",
     "jshint-stylish": "^0.4.0",
-    "toga": "^0.2.2"
+    "toga": "^0.3.0"
   },
   "engines": {
     "node": ">= 0.10"
