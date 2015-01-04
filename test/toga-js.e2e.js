@@ -3,12 +3,11 @@
 var js = require('../index'),
 	es = require('event-stream'),
 	expect = require('expect.js'),
-	fs = require('fs'),
 	toga = require('toga'),
 
 	config = {
-		js: __dirname + '/fixtures/**/*.js',
-		txt: __dirname + '/fixtures/**/*.txt',
+		js:   __dirname + '/fixtures/**/*.js',
+		txt:  __dirname + '/fixtures/**/*.txt',
 		dest: __dirname + '/actual'
 	};
 
@@ -19,7 +18,7 @@ describe('toga-js e2e', function () {
 		count++;
 
 		var expected = file.path.replace('fixtures', 'expected') + '.json';
-		expect(JSON.stringify(file.ast, null, 4) + '\n').to.be(fs.readFileSync(expected, 'utf8'));
+		expect(JSON.stringify(file.ast)).to.be(JSON.stringify(require(expected)));
 		cb(null, file);
 	}
 
@@ -30,9 +29,11 @@ describe('toga-js e2e', function () {
 		cb(null, file);
 	}
 
-	it('should parse javascript files', function (done) {
+	beforeEach(function () {
 		count = 0;
+	});
 
+	it('should parse javascript files', function (done) {
 		toga
 			.src(config.js)
 			.pipe(js.parser())
@@ -46,8 +47,6 @@ describe('toga-js e2e', function () {
 	});
 
 	it('should not parse empty files', function (done) {
-		count = 0;
-
 		var files = [
 			{ path: 'foo.js' },
 			{ path: 'foo.js', content: null },
@@ -66,8 +65,6 @@ describe('toga-js e2e', function () {
 	});
 
 	it('should not parse unknown file types', function (done) {
-		count = 0;
-
 		toga
 			.src(config.txt)
 			.pipe(js.parser())
