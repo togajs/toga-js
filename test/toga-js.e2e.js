@@ -1,79 +1,93 @@
-'use strict';
+/*eslint-env mocha */
 
-var js = require('../index'),
-	es = require('event-stream'),
-	expect = require('expect.js'),
+var parser = require('../src/toga-js').parser,
+	expect = require('expect'),
+	streamArray = require('stream-array'),
 	toga = require('toga'),
+	join = require('path').join,
+	readFileSync = require('fs').readFileSync,
 
 	config = {
-		js:   __dirname + '/fixtures/**/*.js',
-		txt:  __dirname + '/fixtures/**/*.txt',
-		dest: __dirname + '/actual'
+		fixtures: join(__dirname, 'fixtures'),
+		expected: join(__dirname, 'expected'),
+		actual: join(__dirname, 'actual')
 	};
 
 describe('toga-js e2e', function () {
-	var count;
+	describe('raw streams', function () {
+		function testWithArray(array, stream, done) {
+			function expectChunk(chunk) {
+				expect(chunk).toEqual({
+					type: 'Document',
+					blocks: [{
+						contents: 'hello',
+						type: 'Code'
+					}]
+				});
+			}
 
-	function toEqualExpected(file, cb) {
-		count++;
+			streamArray(array)
+				.pipe(stream)
+				.on('data', expectChunk)
+				.on('error', done)
+				.on('end', done);
+		}
 
-		var expected = file.path.replace('fixtures', 'expected') + '.json';
-		expect(JSON.stringify(file.ast)).to.be(JSON.stringify(require(expected)));
-		cb(null, file);
-	}
+		it('should parse strings', function (done) {
+			var strings = ['hello', 'hello'];
 
-	function toEqualUndefined(file, cb) {
-		count++;
+			testWithArray(strings, parser(), done);
+		});
 
-		expect(file.toga).to.be(undefined);
-		cb(null, file);
-	}
+		it('should parse buffers', function (done) {
+			var buffers = [new Buffer('hello'), new Buffer('hello')];
 
-	beforeEach(function () {
-		count = 0;
+			testWithArray(buffers, parser(), done);
+		});
 	});
 
-	it('should parse javascript files', function (done) {
-		toga
-			.src(config.js)
-			.pipe(js.parser())
-			.pipe(es.map(toEqualExpected))
-			.pipe(toga.dest(config.dest))
-			.on('error', done)
-			.on('end', function () {
-				expect(count).to.be(8);
-				done();
-			});
-	});
+	describe('object streams', function () {
+		function testWithFile(filename, stream, done) {
+			var fixture = join(config.fixtures, filename),
+				expected = join(config.expected, filename + '.json');
 
-	it('should not parse empty files', function (done) {
-		var files = [
-			{ path: 'foo.js' },
-			{ path: 'foo.js', content: null },
-			undefined
-		];
+			function expectFile(file) {
+				var actual = JSON.stringify(file.ast, null, 2) + '\n';
 
-		es
-			.readArray(files)
-			.pipe(js.parser())
-			.pipe(es.map(toEqualUndefined))
-			.on('error', done)
-			.on('end', function () {
-				expect(count).to.be(2);
-				done();
-			});
-	});
+				expect(actual).toEqual(String(readFileSync(expected)));
+			}
 
-	it('should not parse unknown file types', function (done) {
-		toga
-			.src(config.txt)
-			.pipe(js.parser())
-			.pipe(es.map(toEqualUndefined))
-			.pipe(toga.dest(config.dest))
-			.on('error', done)
-			.on('end', function () {
-				expect(count).to.be(1);
-				done();
-			});
+			toga
+				.src(fixture)
+				.pipe(stream)
+				.on('data', expectFile)
+				.on('error', done)
+				.on('end', done);
+		}
+
+		it('should parse js', function (done) {
+			testWithFile('tags.js', parser(), done);
+		});
+
+		it('should parse stratified js', function (done) {
+			testWithFile('tags.sjs', parser(), done);
+		});
+
+		it('should parse typescript', function (done) {
+			testWithFile('tags.ts', parser(), done);
+		});
+
+		it('should ignore unknown files', function (done) {
+			function expectFile(file) {
+				expect(file.ast).toBe(undefined);
+			}
+
+			toga
+				.src(join(config.fixtures, 'unused.coffee'))
+				.pipe(parser())
+				.on('data', expectFile)
+				.on('error', done)
+				.on('end', done);
+		});
 	});
 });

@@ -1,0 +1,202 @@
+{
+  "type": "Document",
+  "blocks": [
+    {
+      "type": "Code",
+      "contents": ""
+    },
+    {
+      "type": "Comment",
+      "description": "description text",
+      "tags": []
+    },
+    {
+      "type": "Code",
+      "contents": ""
+    },
+    {
+      "type": "Comment",
+      "description": "description\n",
+      "tags": [
+        {
+          "tag": "module",
+          "type": "{Type.<Type,Type(Type,Type.<Type>)>}",
+          "name": "[name={}]",
+          "description": "description text\n"
+        },
+        {
+          "tag": "module",
+          "type": "{Type}",
+          "name": "name",
+          "description": "description text\n"
+        },
+        {
+          "tag": "module",
+          "name": "[name]",
+          "description": "description text\n"
+        },
+        {
+          "tag": "module",
+          "name": "name",
+          "description": "description text\n"
+        },
+        {
+          "tag": "module",
+          "name": "name"
+        }
+      ]
+    },
+    {
+      "type": "Code",
+      "contents": ""
+    },
+    {
+      "type": "Comment",
+      "description": "",
+      "tags": [
+        {
+          "tag": "extends",
+          "type": "{Type.<Type,Type(Type,Type.<Type>)>}",
+          "name": "[name={}]",
+          "description": "description text"
+        }
+      ]
+    },
+    {
+      "type": "Code",
+      "contents": ""
+    },
+    {
+      "type": "Comment",
+      "description": "",
+      "tags": [
+        {
+          "tag": "extends",
+          "type": "{Type}",
+          "name": "name",
+          "description": "description text"
+        }
+      ]
+    },
+    {
+      "type": "Code",
+      "contents": ""
+    },
+    {
+      "type": "Comment",
+      "description": "",
+      "tags": [
+        {
+          "tag": "extends",
+          "name": "[name]",
+          "description": "description text"
+        }
+      ]
+    },
+    {
+      "type": "Code",
+      "contents": ""
+    },
+    {
+      "type": "Comment",
+      "description": "",
+      "tags": [
+        {
+          "tag": "extends",
+          "name": "name",
+          "description": "description text"
+        }
+      ]
+    },
+    {
+      "type": "Code",
+      "contents": ""
+    },
+    {
+      "type": "Comment",
+      "description": "",
+      "tags": [
+        {
+          "tag": "extends",
+          "name": "name"
+        }
+      ]
+    },
+    {
+      "type": "Code",
+      "contents": ""
+    },
+    {
+      "type": "Comment",
+      "description": "",
+      "tags": [
+        {
+          "tag": "tag",
+          "type": "{Type.<Type,Type(Type,Type.<Type>)>}",
+          "description": "description text"
+        }
+      ]
+    },
+    {
+      "type": "Code",
+      "contents": ""
+    },
+    {
+      "type": "Comment",
+      "description": "",
+      "tags": [
+        {
+          "tag": "tag",
+          "type": "{Type}",
+          "description": "description text"
+        }
+      ]
+    },
+    {
+      "type": "Code",
+      "contents": ""
+    },
+    {
+      "type": "Comment",
+      "description": "",
+      "tags": [
+        {
+          "tag": "tag",
+          "description": "description text"
+        }
+      ]
+    },
+    {
+      "type": "Code",
+      "contents": ""
+    },
+    {
+      "type": "Comment",
+      "description": "",
+      "tags": [
+        {
+          "tag": "tag",
+          "description": "description text"
+        }
+      ]
+    },
+    {
+      "type": "Code",
+      "contents": ""
+    },
+    {
+      "type": "Comment",
+      "description": "",
+      "tags": [
+        {
+          "tag": "tag"
+        }
+      ]
+    },
+    {
+      "type": "Code",
+      "contents": "/*! ignore */\n/*!\n * ignore\n */\n\n/* ignore */\n/*\n * ignore\n */"
+    }
+  ],
+  "nav": {}
+}

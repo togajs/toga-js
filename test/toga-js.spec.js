@@ -1,16 +1,16 @@
-'use strict';
+/*eslint-env mocha */
 
-var js = require('../index'),
-	expect = require('expect.js');
+var parser = require('../src/toga-js').parser,
+	expect = require('expect');
 
 describe('toga-js spec', function () {
 	describe('parser', function () {
 		it('should return a transform stream', function () {
-			var retval = js.parser();
+			var retval = parser();
 
-			expect(retval.pipe).to.be.a(Function);
-			expect(retval.readable).to.be(true);
-			expect(retval.writable).to.be(true);
+			expect(retval.pipe).toBeA(Function);
+			expect(retval.readable).toBe(true);
+			expect(retval.writable).toBe(true);
 		});
 	});
 });
