@@ -1,92 +1,85 @@
 {
-  "type": "Document",
-  "blocks": [
+  "type": "Documentation",
+  "body": [
     {
-      "type": "Code",
-      "contents": ""
-    },
-    {
-      "type": "Comment",
+      "type": "CommentBlock",
       "description": "description text",
+      "trailingCode": "",
       "tags": []
     },
     {
-      "type": "Code",
-      "contents": ""
-    },
-    {
-      "type": "Comment",
+      "type": "CommentBlock",
       "description": "description\n",
+      "trailingCode": "",
       "tags": [
         {
+          "type": "CommentBlockTag",
           "tag": "module",
-          "type": "{Type.<Type,Type(Type,Type.<Type>)>}",
+          "kind": "Type.<Type,Type(Type,Type.<Type>)>",
           "name": "[name={}]",
           "description": "description text\n"
         },
         {
+          "type": "CommentBlockTag",
           "tag": "module",
-          "type": "{Type}",
+          "kind": "Type",
           "name": "name",
           "description": "description text\n"
         },
         {
+          "type": "CommentBlockTag",
           "tag": "module",
           "name": "[name]",
           "description": "description text\n"
         },
         {
+          "type": "CommentBlockTag",
           "tag": "module",
           "name": "name",
           "description": "description text\n"
         },
         {
+          "type": "CommentBlockTag",
           "tag": "module",
           "name": "name"
         }
       ]
     },
     {
-      "type": "Code",
-      "contents": ""
-    },
-    {
-      "type": "Comment",
+      "type": "CommentBlock",
       "description": "",
+      "trailingCode": "",
       "tags": [
         {
+          "type": "CommentBlockTag",
           "tag": "extends",
-          "type": "{Type.<Type,Type(Type,Type.<Type>)>}",
+          "kind": "Type.<Type,Type(Type,Type.<Type>)>",
           "name": "[name={}]",
           "description": "description text"
         }
       ]
     },
     {
-      "type": "Code",
-      "contents": ""
-    },
-    {
-      "type": "Comment",
+      "type": "CommentBlock",
       "description": "",
+      "trailingCode": "",
       "tags": [
         {
+          "type": "CommentBlockTag",
           "tag": "extends",
-          "type": "{Type}",
+          "kind": "Type",
           "name": "name",
           "description": "description text"
         }
       ]
     },
     {
-      "type": "Code",
-      "contents": ""
-    },
-    {
-      "type": "Comment",
+      "type": "CommentBlock",
       "description": "",
+      "trailingCode": "",
       "tags": [
         {
+          "type": "CommentBlockTag",
           "tag": "extends",
           "name": "[name]",
           "description": "description text"
@@ -94,14 +87,12 @@
       ]
     },
     {
-      "type": "Code",
-      "contents": ""
-    },
-    {
-      "type": "Comment",
+      "type": "CommentBlock",
       "description": "",
+      "trailingCode": "",
       "tags": [
         {
+          "type": "CommentBlockTag",
           "tag": "extends",
           "name": "name",
           "description": "description text"
@@ -109,94 +100,77 @@
       ]
     },
     {
-      "type": "Code",
-      "contents": ""
-    },
-    {
-      "type": "Comment",
+      "type": "CommentBlock",
       "description": "",
+      "trailingCode": "",
       "tags": [
         {
+          "type": "CommentBlockTag",
           "tag": "extends",
           "name": "name"
         }
       ]
     },
     {
-      "type": "Code",
-      "contents": ""
-    },
-    {
-      "type": "Comment",
+      "type": "CommentBlock",
       "description": "",
+      "trailingCode": "",
       "tags": [
         {
+          "type": "CommentBlockTag",
           "tag": "tag",
-          "type": "{Type.<Type,Type(Type,Type.<Type>)>}",
+          "kind": "Type.<Type,Type(Type,Type.<Type>)>",
           "description": "description text"
         }
       ]
     },
     {
-      "type": "Code",
-      "contents": ""
-    },
-    {
-      "type": "Comment",
+      "type": "CommentBlock",
       "description": "",
+      "trailingCode": "",
       "tags": [
         {
+          "type": "CommentBlockTag",
           "tag": "tag",
-          "type": "{Type}",
+          "kind": "Type",
           "description": "description text"
         }
       ]
     },
     {
-      "type": "Code",
-      "contents": ""
-    },
-    {
-      "type": "Comment",
+      "type": "CommentBlock",
       "description": "",
+      "trailingCode": "",
       "tags": [
         {
+          "type": "CommentBlockTag",
           "tag": "tag",
           "description": "description text"
         }
       ]
     },
     {
-      "type": "Code",
-      "contents": ""
-    },
-    {
-      "type": "Comment",
+      "type": "CommentBlock",
       "description": "",
+      "trailingCode": "",
       "tags": [
         {
+          "type": "CommentBlockTag",
           "tag": "tag",
           "description": "description text"
         }
       ]
     },
     {
-      "type": "Code",
-      "contents": ""
-    },
-    {
-      "type": "Comment",
+      "type": "CommentBlock",
       "description": "",
+      "trailingCode": "/*! ignore */\n/*!\n * ignore\n */\n\n/* ignore */\n/*\n * ignore\n */",
       "tags": [
         {
+          "type": "CommentBlockTag",
           "tag": "tag"
         }
       ]
-    },
-    {
-      "type": "Code",
-      "contents": "/*! ignore */\n/*!\n * ignore\n */\n\n/* ignore */\n/*\n * ignore\n */"
     }
-  ],
-  "nav": {}
+  ]
 }

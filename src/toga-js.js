@@ -14,13 +14,17 @@ var parserDefaults = {
 	name: 'toga-js',
 	extension: /.(js|sjs|ts)$/,
 	namedTags: [
-		'module',
-		'imports',
-		'exports',
+		'arg',
+		'argument',
 		'class',
+		'exports',
 		'extends',
+		'imports',
 		'method',
+		'module',
 		'param',
+		'parameter',
+		'prop',
 		'property'
 	]
 };
