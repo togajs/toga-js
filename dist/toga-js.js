@@ -27,7 +27,7 @@ var _tunic2 = _interopRequireDefault(_tunic);
 var parserDefaults = {
 	name: 'toga-js',
 	extension: /.(js|sjs|ts)$/,
-	namedTags: ['module', 'imports', 'exports', 'class', 'extends', 'method', 'param', 'property']
+	namedTags: ['arg', 'argument', 'class', 'exports', 'extends', 'imports', 'method', 'module', 'param', 'parameter', 'prop', 'property']
 };
 
 function parser(options) {

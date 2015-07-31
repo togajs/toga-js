@@ -1,53 +1,18 @@
 /* eslint-env mocha */
 
-var parser = require('../src/toga-js').parser,
-	expect = require('expect'),
-	streamArray = require('stream-array'),
-	toga = require('toga'),
-	join = require('path').join,
-	readFileSync = require('fs').readFileSync,
+import { parser } from '../src/toga-js';
+import expect from 'expect';
+import toga from 'toga';
+import { join } from 'path';
+import { readFileSync } from 'fs';
 
-	config = {
-		fixtures: join(__dirname, 'fixtures'),
-		expected: join(__dirname, 'expected'),
-		actual: join(__dirname, 'actual')
-	};
+var config = {
+	fixtures: join(__dirname, 'fixtures'),
+	expected: join(__dirname, 'expected'),
+	actual: join(__dirname, 'actual')
+};
 
 describe('toga-js e2e', function () {
-	describe('raw streams', function () {
-		function testWithArray(array, stream, done) {
-			function expectChunk(chunk) {
-				expect(chunk).toEqual({
-					type: 'Documentation',
-					body: [{
-						type: 'CommentBlock',
-						description: '',
-						trailingCode: 'hello',
-						tags: []
-					}]
-				});
-			}
-
-			streamArray(array)
-				.pipe(stream)
-				.on('data', expectChunk)
-				.on('error', done)
-				.on('end', done);
-		}
-
-		it('should parse strings', function (done) {
-			var strings = ['hello', 'hello'];
-
-			testWithArray(strings, parser(), done);
-		});
-
-		it('should parse buffers', function (done) {
-			var buffers = [new Buffer('hello'), new Buffer('hello')];
-
-			testWithArray(buffers, parser(), done);
-		});
-	});
-
 	describe('object streams', function () {
 		function testWithFile(filename, stream, done) {
 			var fixture = join(config.fixtures, filename),
@@ -57,12 +22,14 @@ describe('toga-js e2e', function () {
 				var actual = JSON.stringify(file.docAst, null, 2) + '\n';
 
 				expect(actual).toEqual(String(readFileSync(expected)));
+				// file.contents = new Buffer(actual);
 			}
 
 			toga
 				.src(fixture)
 				.pipe(stream)
 				.on('data', expectFile)
+				// .pipe(toga.dest(config.actual))
 				.on('error', done)
 				.on('end', done);
 		}
