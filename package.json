@@ -1,6 +1,6 @@
 {
   "name": "toga-js",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "A JavaScript inline documentation-block parser.",
   "keywords": [
     "togaplugin",
